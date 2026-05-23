@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 1 AI x Web3 Concept Quiz</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --ink: #17202a;
+      --muted: #5c6670;
+      --line: #d8dee6;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-2: #7c3aed;
+      --ok: #15803d;
+      --bad: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+
+    header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 18px 0;
+    }
+
+    .score {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    button {
+      border: 0;
+      border-radius: 7px;
+      padding: 10px 12px;
+      background: var(--ink);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #e9edf2;
+      color: var(--ink);
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      background: #f1f4f7;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      font-weight: 600;
+    }
+
+    .option.correct {
+      border-color: var(--ok);
+      background: #e9f7ee;
+      color: var(--ok);
+    }
+
+    .option.wrong {
+      border-color: var(--bad);
+      background: #fdecec;
+      color: var(--bad);
+    }
+
+    .explain {
+      display: none;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .explain.visible {
+      display: block;
+    }
+
+    .tagline {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--accent-2);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 26px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="tagline">Week 1 Proof-of-Work Demo</div>
+      <h1>AI x Web3 Concept Quiz</h1>
+      <p>A small interactive learning artifact for reviewing Week 1 concepts: agent workflow, wallet safety, signatures, transactions, and human confirmation.</p>
+    </header>
+
+    <section class="toolbar" aria-label="Quiz controls">
+      <div class="score" id="score">Score: 0 / 5</div>
+      <button class="secondary" id="reset" type="button">Reset</button>
+    </section>
+
+    <section class="grid" id="quiz"></section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "What is the safest boundary for a Learning Agent in Week 1?",
+        options: [
+          "It may draft notes and plans, but humans confirm commits, signatures, and submissions.",
+          "It should receive the wallet seed phrase so it can work faster.",
+          "It should auto-submit every task without review."
+        ],
+        answer: 0,
+        why: "AI can help prepare materials, but public publishing and wallet actions need human review."
+      },
+      {
+        q: "What does a wallet signature mean?",
+        options: [
+          "A casual click with no security meaning.",
+          "Approval of a specific message or transaction by the wallet holder.",
+          "A guarantee that a smart contract is safe."
+        ],
+        answer: 1,
+        why: "A signature authorizes a specific action or proves control of an address."
+      },
+      {
+        q: "Why use a test wallet for course experiments?",
+        options: [
+          "Because test wallets are faster than real wallets.",
+          "Because experiments should avoid real funds and main-wallet risk.",
+          "Because test wallets do not have addresses."
+        ],
+        answer: 1,
+        why: "A dedicated test wallet limits risk while learning transactions, signing, and contracts."
+      },
+      {
+        q: "What should be recorded after a testnet transaction?",
+        options: [
+          "Seed phrase and private key.",
+          "Transaction hash, status, gas, block number, and explorer link.",
+          "Only a screenshot of the wallet balance."
+        ],
+        answer: 1,
+        why: "Public verification should use transaction metadata, never secrets."
+      },
+      {
+        q: "Where does AI fit in the minimal AI x Web3 workflow?",
+        options: [
+          "AI drafts and explains; humans review and confirm before chain execution.",
+          "AI signs wallet prompts automatically.",
+          "AI replaces block explorers."
+        ],
+        answer: 0,
+        why: "The useful pattern is AI assistance plus human confirmation and public verification."
+      }
+    ];
+
+    const quiz = document.querySelector("#quiz");
+    const score = document.querySelector("#score");
+    const reset = document.querySelector("#reset");
+    const answered = new Map();
+
+    function render() {
+      quiz.innerHTML = "";
+      questions.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `<h2>${index + 1}. ${item.q}</h2>`;
+
+        const options = document.createElement("div");
+        options.className = "options";
+
+        item.options.forEach((option, optionIndex) => {
+          const button = document.createElement("button");
+          button.className = "option";
+          button.type = "button";
+          button.textContent = option;
+          button.addEventListener("click", () => choose(index, optionIndex));
+          options.appendChild(button);
+        });
+
+        const explain = document.createElement("p");
+        explain.className = "explain";
+        explain.textContent = item.why;
+
+        card.appendChild(options);
+        card.appendChild(explain);
+        quiz.appendChild(card);
+      });
+    }
+
+    function choose(questionIndex, optionIndex) {
+      if (answered.has(questionIndex)) return;
+      answered.set(questionIndex, optionIndex);
+
+      const card = quiz.children[questionIndex];
+      const buttons = card.querySelectorAll(".option");
+      const correctIndex = questions[questionIndex].answer;
+
+      buttons[correctIndex].classList.add("correct");
+      if (optionIndex !== correctIndex) {
+        buttons[optionIndex].classList.add("wrong");
+      }
+      card.querySelector(".explain").classList.add("visible");
+      updateScore();
+    }
+
+    function updateScore() {
+      let total = 0;
+      answered.forEach((value, key) => {
+        if (questions[key].answer === value) total += 1;
+      });
+      score.textContent = `Score: ${total} / ${questions.length}`;
+    }
+
+    reset.addEventListener("click", () => {
+      answered.clear();
+      render();
+      updateScore();
+    });
+
+    render();
+  </script>
+</body>
+</html>
+

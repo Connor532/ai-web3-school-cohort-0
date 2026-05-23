@@ -33,6 +33,18 @@ Secrets should stay in local environment variables or a trusted secrets manager.
 4. Complete at least one small proof-of-work artifact: a task note, experiment note, or Handbook feedback entry.
 5. Prepare a lightweight Hackathon idea backlog focused on agent workflows, wallet permissions, Web3 tool use, or AI security.
 
+## Week 1 Proof-of-Work Links
+
+- Learning plan: `learning-plan.md`
+- Daily note: `daily/2026-05-23.md`
+- Tool preparation: `tasks/week-1-tools.md`
+- AI concept cards: `notes/ai-concepts-week-1.md`
+- Web3 concept cards: `notes/web3-concepts-week-1.md`
+- Minimal AI x Web3 flow: `experiments/ai-web3-minimal-flow.md`
+- Interactive concept quiz: `demos/week-1-concept-quiz.html`
+- Proof-of-Work pack: `tasks/week-1-pow-pack.md`
+- Web3 wallet practice plan: `tasks/week-1-web3-practice-plan.md`
+
 ## Repository Structure
 
 ```text
@@ -46,6 +58,9 @@ handbook-feedback/
 hackathon/
 submissions/
 templates/
+notes/
+resources/
+demos/
 ```
 
 - `profile.md`: learner profile, goals, baseline, and preferences.
@@ -57,6 +72,9 @@ templates/
 - `hackathon/`: project ideas, design notes, demo plans, and retrospectives.
 - `submissions/`: submitted links, proof records, and external platform references.
 - `templates/`: reusable note templates.
+- `notes/`: concept cards and learning notes.
+- `resources/`: follow lists and source collections.
+- `demos/`: small interactive learning artifacts.
 
 ## Learning Agent Initialization Log
 
@@ -75,4 +93,3 @@ Human confirmation needed:
 - Install and log in to GitHub CLI if needed.
 - Review generated files before committing.
 - Manually confirm any commit and push.
-
