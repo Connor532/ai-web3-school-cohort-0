@@ -1,56 +1,206 @@
-# Week 1 AI Concept Cards
+# Week 1 AI 基础概念卡片
 
-## LLM
+本笔记用于 AI x Web3 School Week 1 的 AI 基础概念整理。目标不是背术语，而是把这些概念放到真实学习和构建流程里理解：什么时候适合用 AI，什么时候必须人工复核，什么时候需要工具、日志和权限边界。
 
-A Large Language Model generates text by predicting likely token sequences from the context it can see. It is useful for explanation, summarization, code drafting, and reasoning support, but its outputs still need verification.
+## 1. LLM
 
-Risk note: an LLM can sound confident while producing incorrect facts, broken links, or unsafe instructions.
+LLM，即 Large Language Model，大语言模型，是一种根据上下文预测后续 token 的模型。它擅长理解自然语言、总结资料、生成代码草稿、解释概念、辅助推理和改写表达。
 
-## Prompt
+我自己的理解：LLM 更像一个高效的“语言与模式推理引擎”，而不是一个永远正确的知识库。它能根据已有上下文组织答案，但不保证每个事实都准确。
 
-A prompt is the current instruction or task given to the model. It should include context, goal, constraints, expected output format, and safety boundaries.
+例子：
 
-Week 1 use: ask the Learning Agent to turn course requirements into a checklist, learning plan, and repo artifacts.
+- 让 LLM 解释什么是钱包签名。
+- 让 LLM 把课程任务拆成 checklist。
+- 让 LLM 根据 README 草稿生成更清晰的目录说明。
 
-## Context Window
+常见误区：
 
-The context window is the model's working memory for a single interaction. It can include system instructions, user instructions, prior messages, files, and tool results.
+- 误以为 LLM 说得流畅就一定正确。
+- 误以为 LLM 给出的链接、论文、API 名称都真实存在。
+- 误以为 LLM 可以替代资料核查和代码测试。
 
-Practical rule: keep important facts explicit in the current task instead of assuming the model remembers everything.
+使用边界：
 
-## Workflow
+- 关键事实需要查官方文档或课程材料。
+- 代码需要运行或 review。
+- 涉及资金、钱包、签名、权限、合约写入时，不能让模型直接代替人做决定。
 
-A workflow is a predefined process where AI may help at one or more steps, but the path is mostly fixed.
+## 2. Prompt
 
-Example: read course task, draft note, human review, commit to GitHub, submit proof link.
+Prompt 是用户给模型的当前任务说明。一个好的 prompt 不只是提问，还应该包含目标、背景、约束、输出格式和安全边界。
 
-## Agent
+我自己的理解：Prompt 是把人的意图翻译成模型能执行的任务说明。Prompt 越模糊，模型越容易自己补全假设；Prompt 越具体，输出越容易检查和复用。
 
-An agent can plan steps, call tools, read files, write files, and continue across a multi-step task. It is more powerful than a one-shot prompt, but also needs clearer boundaries.
+例子：
 
-Week 1 boundary: the agent can draft repo files and submission text, but the human confirms GitHub commits, wallet actions, signatures, and submissions.
+- 不清晰：帮我学 AI。
+- 更清晰：请把 Week 1 AI 学习内容整理成 6 个概念卡片，每个概念包含解释、例子、误区和使用边界。
 
-## Tool Use
+常见误区：
 
-Tool use lets an AI system move from "answering" to "doing": reading pages, editing files, running commands, creating diagrams, or using APIs.
+- 只写“帮我优化一下”，但不说明面向谁、用于哪里、什么算好。
+- 把多个不相关任务塞进一个 prompt，导致模型输出散乱。
+- 忘记说明“不要包含敏感信息”。
 
-Safety rule: tool access should be scoped, observable, and reversible when possible.
+使用边界：
 
-## AI Coding
+- Prompt 可以提升输出质量，但不能消除模型幻觉。
+- 对复杂任务，最好让模型先拆步骤，再逐步执行。
 
-AI coding tools such as Codex, Claude Code, and Cursor can generate code, inspect repos, explain errors, and maintain learning artifacts.
+## 3. Context Window
 
-Human role: review code, check links, test outputs, and decide whether changes should be committed.
+Context Window 是模型一次交互中能看到的上下文范围，包括系统指令、用户消息、历史对话、文件片段和工具结果。它可以理解为模型的“工作记忆”。
 
-## Verification
+我自己的理解：模型不是自动记住我所有长期目标，而是依赖当前上下文工作。重要背景必须明确放进当前任务里。
 
-Verification means checking AI output against sources, tests, screenshots, logs, or public records.
+例子：
 
-Week 1 proof examples:
+- 如果我让 Codex 修改 GitHub repo，它需要看到仓库结构、已有文件和当前任务要求。
+- 如果我让模型写打卡笔记，它需要知道日期、课程阶段、已完成内容和下一步计划。
 
-- GitHub commit history
-- Markdown notes
-- Browser-openable demo
-- Block explorer transaction links
-- Screenshots without secrets
+常见误区：
+
+- 以为模型一定记得很久以前说过的细节。
+- 把大量无关内容都塞进上下文，反而让重点变模糊。
+- 忘记在长任务中重申关键约束。
+
+使用边界：
+
+- 长上下文可能出现重点漂移。
+- 需要对模型输出做分段检查。
+- 对仓库任务，应让模型读取真实文件，而不是凭记忆猜测。
+
+## 4. Workflow
+
+Workflow 是预先设计好的任务流程。AI 可以参与其中某些步骤，但流程路径基本由人或系统提前定义。
+
+我自己的理解：Workflow 适合步骤清楚、重复性强、需要稳定输出的任务。它不像 Agent 那样自由规划，而是更可控。
+
+例子：
+
+1. 打开课程任务。
+2. 提取提交要求。
+3. 生成 Markdown 草稿。
+4. 人工复核。
+5. commit 到 GitHub。
+6. 提交公开链接。
+
+常见误区：
+
+- 把所有 AI 自动化都叫 Agent。
+- 明明流程固定，却过度设计成复杂 Agent。
+- 忽略 workflow 中每一步的日志和失败恢复。
+
+使用边界：
+
+- Workflow 适合确定性流程。
+- 如果任务目标开放、步骤无法预先写死，才更可能需要 Agent。
+
+## 5. Agent
+
+Agent 是能围绕目标进行多步规划、调用工具、读取/写入文件、根据中间结果调整行动的 AI 系统。它比单次 prompt 更接近“执行者”。
+
+我自己的理解：Agent 的价值不是“更会聊天”，而是能把任务串起来：读资料、拆任务、写文件、检查状态、给出下一步。但越接近真实执行，越需要权限边界。
+
+例子：
+
+- Learning Agent 阅读课程 Prompt 和 Handbook。
+- 初始化 GitHub 学习仓库。
+- 生成学习计划、每日打卡、PoW Pack 和提交链接索引。
+- 根据学习面板任务继续补齐公开笔记。
+
+常见误区：
+
+- 认为 Agent 可以完全自主处理所有事情。
+- 让 Agent 接触 API Key、私钥、助记词或钱包签名。
+- 没有设置人工确认节点。
+
+使用边界：
+
+- Agent 可以准备材料，但 public submit、commit、push、钱包签名、交易执行都应由人确认。
+- Agent 执行过程需要可观察日志，方便复盘和纠错。
+
+## 6. Tool Use
+
+Tool Use 是指模型调用外部工具完成任务，例如读取网页、搜索资料、编辑文件、运行测试、访问 GitHub、生成图表或调用 API。
+
+我自己的理解：Tool Use 让模型从“只会回答”变成“可以做事”。但工具越强，风险越高，所以必须限制权限和记录行为。
+
+例子：
+
+- 用浏览器读取课程学习面板。
+- 用文件工具更新 `README.md` 和学习笔记。
+- 用 GitHub 链接作为 proof-of-work。
+- 用区块浏览器验证测试网交易。
+
+常见误区：
+
+- 给模型过宽权限，却没有人工确认。
+- 工具调用失败后不检查结果。
+- 让模型在不知道后果的情况下提交表单或执行交易。
+
+使用边界：
+
+- 读操作风险较低，写操作和提交操作风险较高。
+- 涉及账号、隐私、资金、权限变化时，需要明确人工确认。
+
+## 7. AI Coding
+
+AI Coding 是用 Codex、Claude Code、Cursor 等工具辅助写代码、改文件、解释错误、生成测试或维护项目结构。
+
+我自己的理解：AI Coding 很适合加速原型和学习，但不能替代工程判断。模型可以写出看起来合理但实际不可运行的代码。
+
+例子：
+
+- 让 Codex 创建学习 repo 目录结构。
+- 生成一个可打开的 HTML quiz demo。
+- 更新 Markdown 任务记录。
+- 根据报错分析 GitHub CLI 或 git 问题。
+
+常见误区：
+
+- 复制 AI 生成代码后不运行。
+- 不检查依赖、路径、环境变量和错误处理。
+- 把 AI 生成内容直接当作最终答案。
+
+使用边界：
+
+- 代码要运行或至少静态检查。
+- 涉及安全、权限、资金、签名的代码要格外谨慎。
+- 不把 `.env`、API Key、token、私钥提交到仓库。
+
+## 8. Verification
+
+Verification 是对 AI 输出进行验证，包括查官方文档、运行代码、检查 GitHub diff、打开页面、看测试结果、查看区块浏览器记录等。
+
+我自己的理解：AI 负责提高产出速度，人负责判断产出是否可信。没有 verification 的 AI 输出只能算草稿。
+
+例子：
+
+- 课程任务链接要以学习面板或官方 Handbook 为准。
+- GitHub 提交前检查 diff。
+- 测试网交易完成后，用区块浏览器确认状态、Gas 和区块号。
+- 打卡笔记发布前检查是否包含敏感信息。
+
+常见误区：
+
+- 只检查文字是否通顺，不检查事实是否正确。
+- 只看 AI 的解释，不看原始来源。
+- 只看交易截图，不保存交易哈希和 explorer 链接。
+
+使用边界：
+
+- AI 生成的学习笔记可以作为初稿。
+- 最终提交前，应由人确认内容、链接、隐私和任务匹配度。
+
+## AI 辅助与人工复核说明
+
+这份笔记使用 Codex 辅助整理结构和初稿。我做的复核与改写包括：
+
+- 对照 Week 1 学习面板的任务要求，确认至少包含 6 个 AI 基础概念。
+- 将每个概念改写成自己的理解，而不是只保留定义。
+- 为每个概念补充例子、误区或使用边界。
+- 删除不必要的实现细节，保留适合公开提交的学习表达。
+- 检查没有写入 API Key、token、`.env`、私钥、助记词或其他敏感信息。
 
