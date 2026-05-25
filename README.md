@@ -44,6 +44,14 @@ Secrets should stay in local environment variables or a trusted secrets manager.
 - Interactive concept quiz: `demos/week-1-concept-quiz.html`
 - Proof-of-Work pack: `tasks/week-1-pow-pack.md`
 - Web3 wallet practice plan: `tasks/week-1-web3-practice-plan.md`
+- Learning Agent setup record: `tasks/week-1-learning-agent-setup.md`
+- X start post draft: `drafts/week-1-x-start-post.md`
+- Community intro draft: `drafts/week-1-community-intro.md`
+- EOA / smart account / multisig comparison: `notes/eoa-smart-account-multisig.md`
+- Restricted Web3 assistant workflow: `experiments/restricted-web3-assistant-workflow.md`
+- Week 1 learning summary: `notes/week-1-learning-summary.md`
+- Industry observation: `resources/industry-observation-week-1.md`
+- Submission guide: `submissions/week-1-task-submit-guide.md`
 
 ## Repository Structure
 
@@ -61,6 +69,7 @@ templates/
 notes/
 resources/
 demos/
+drafts/
 ```
 
 - `profile.md`: learner profile, goals, baseline, and preferences.
@@ -75,6 +84,7 @@ demos/
 - `notes/`: concept cards and learning notes.
 - `resources/`: follow lists and source collections.
 - `demos/`: small interactive learning artifacts.
+- `drafts/`: public post drafts and community intro drafts.
 
 ## Learning Agent Initialization Log
 
