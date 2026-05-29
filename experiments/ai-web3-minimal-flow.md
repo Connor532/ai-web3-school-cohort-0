@@ -31,6 +31,10 @@ flowchart TD
 - Before sending any transaction
 - Before deploying or writing to a contract
 
+## Submission Summary
+
+This flow solves the problem of using an AI agent to help with Web3 learning tasks without giving the agent unsafe control over wallet actions. The AI assists with planning, drafting notes, preparing code or transaction explanations, and organizing proof records, while the human checks sources, code, wallet prompts, and public submissions. Any wallet creation, message signing, transaction sending, contract deployment, contract write call, or public submission must be manually confirmed by the human. The final result can be verified through GitHub commits, contract addresses, transaction hashes, and block explorer links. The main risks are hallucinated AI output, wrong transaction parameters, over-broad wallet permissions, leaked secrets, and treating testnet habits too casually when moving toward real assets.
+
 ## Logs And Proof
 
 - GitHub commit URL
@@ -46,4 +50,3 @@ flowchart TD
 - If wallet details look unexpected: reject the wallet prompt.
 - If transaction fails: keep the hash, inspect the failure reason, and write a short postmortem.
 - If public notes include sensitive data: remove the data immediately and rotate any exposed credential.
-
