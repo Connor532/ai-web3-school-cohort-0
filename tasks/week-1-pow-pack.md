@@ -24,6 +24,7 @@
 | Industry observation | `resources/industry-observation-week-1.md` |
 | Week 1 learning summary | `notes/week-1-learning-summary.md` |
 | Testnet transaction | `tasks/week-1-testnet-transaction.md` |
+| Minimal smart contract deployment/call | `tasks/week-1-minimal-contract.md`, `experiments/MinimalStorage.sol` |
 | Submission guide | `submissions/week-1-task-submit-guide.md` |
 
 ## Learning Agent Log
@@ -48,12 +49,14 @@ Human confirmed:
 - Any action involving public submission.
 - Any future wallet signature or transaction.
 
-## Not Yet Completed
+## Minimal Smart Contract Proof
 
-These tasks require wallet setup and human confirmation:
-
-- Deploy or call one minimal smart contract.
-- Record contract address, transaction hash, and block explorer link for the contract task.
+- Contract: `MinimalStorage`
+- Network: Sepolia Testnet
+- Contract address: `0x6eb139c4E31457Ce033BAcb2bfC95AdF6deF7E5A`
+- Deployment transaction: https://sepolia.etherscan.io/tx/0xda61cdc0663391f11b3b2eb748fc7866ed77dc441dc706e4bd828eefb96b3079
+- Contract call transaction: https://sepolia.etherscan.io/tx/0xbbb96b4203015b7b858846432b3790a48431b6621e77194e2b71a369ad868e3f
+- Manual confirmation: deployment and `setValue(100)` were both confirmed by me in MetaMask.
 
 ## Safety Boundary
 
