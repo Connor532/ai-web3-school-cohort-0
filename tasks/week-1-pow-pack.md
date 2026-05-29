@@ -23,6 +23,7 @@
 | Industry follow list | `resources/follow-list-week-1.md` |
 | Industry observation | `resources/industry-observation-week-1.md` |
 | Week 1 learning summary | `notes/week-1-learning-summary.md` |
+| Testnet transaction | `tasks/week-1-testnet-transaction.md` |
 | Submission guide | `submissions/week-1-task-submit-guide.md` |
 
 ## Learning Agent Log
@@ -51,12 +52,8 @@ Human confirmed:
 
 These tasks require wallet setup and human confirmation:
 
-- Create a dedicated test wallet.
-- Install and configure browser wallet plugin.
-- Get testnet funds.
-- Send one testnet transaction.
 - Deploy or call one minimal smart contract.
-- Record transaction hash, gas, block number, contract address, and block explorer links.
+- Record contract address, transaction hash, and block explorer link for the contract task.
 
 ## Safety Boundary
 

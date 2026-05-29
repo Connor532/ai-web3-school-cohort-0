@@ -26,6 +26,7 @@ https://github.com/Connor532/ai-web3-school-cohort-0
 | Industry observation | https://github.com/Connor532/ai-web3-school-cohort-0/blob/main/resources/industry-observation-week-1.md |
 | Week 1 learning summary | https://github.com/Connor532/ai-web3-school-cohort-0/blob/main/notes/week-1-learning-summary.md |
 | Web3 wallet / testnet practice plan | https://github.com/Connor532/ai-web3-school-cohort-0/blob/main/tasks/week-1-web3-practice-plan.md |
+| Testnet transaction | https://github.com/Connor532/ai-web3-school-cohort-0/blob/main/tasks/week-1-testnet-transaction.md |
 | Full Week 1 submission guide | https://github.com/Connor532/ai-web3-school-cohort-0/blob/main/submissions/week-1-task-submit-guide.md |
 
 ## Submission Notes
